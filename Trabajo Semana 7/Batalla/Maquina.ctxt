@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Maquina
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Maquina\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=longitud\ latitud
+comment1.target=Maquina(int,\ int)
+comment1.text=\r\n\ constructor\ Maquina\r\n
+comment2.params=newUbicacion
+comment2.target=void\ setUbicacion(Ubicacion)
+comment2.text=\r\n\ metodo\ que\ le\ da\ una\ nueva\ ubicacion\ a\ la\ maquina.\r\n
+comment3.params=
+comment3.target=int[]\ getUbicacion()
+comment3.text=\r\n\ Funcion\ que\ retorna\ la\ longitud\ y\ latitud\ de\ la\ maquina\r\n
+comment4.params=
+comment4.target=boolean\ esDebil()
+comment4.text=\r\n\ Funci\u00F3n\ abstracta\ que\ deber\u00EDa\ indicar\ si\ una\ maquina\ es\ debil\ o\ no.\r\n
+numComments=5

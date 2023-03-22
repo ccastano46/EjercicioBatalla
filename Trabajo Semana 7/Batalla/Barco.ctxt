@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Barco
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Barco\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=longitud\ latitud\ numero\ marino
+comment1.target=Barco(int,\ int,\ int,\ Marino)
+comment1.text=\r\n\ Metodo\ consturctor\ de\ barco\r\n
+comment2.params=
+comment2.target=boolean\ esDebil()
+comment2.text=\r\n\ Funcion\ que\ determina\ si\ el\ barco\ es\ debil.\ Esto\ sucede\ si\ tiene\ menos\ de\ 5\ marinos\r\n
+comment3.params=
+comment3.target=int\ getNumero()
+numComments=4

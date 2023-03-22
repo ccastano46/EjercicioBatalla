@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PortaAviones
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ PortaAviones\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=longitud\ latitud\ numero\ marino\ capacidad
+comment1.target=PortaAviones(int,\ int,\ int,\ Marino,\ int)
+comment1.text=\r\n\ Metodo\ constructor\ de\ PortaAviones\r\n
+comment2.params=
+comment2.target=boolean\ esDebil()
+comment2.text=\r\n\ Funcion\ que\ determina\ si\ el\ barco\ es\ debil.\ Esto\ sucede\ si\ es\ un\ barco\ debil\ o\ si\ un\ avion\ que\ esta\ en\ el\ aire\ es\ debil\r\n
+comment3.params=avion
+comment3.target=void\ anadirAvion(Avion)
+numComments=4

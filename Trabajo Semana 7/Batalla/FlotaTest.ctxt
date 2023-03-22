@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=FlotaTest
+comment0.text=\r\n\ The\ test\ class\ FlotaTest.\r\n\r\n\ @author\ \ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ shouldMoveNorth()
+comment1.text=\r\n\ Metodo\ de\ prueba\ para\ verificar\ que\ todas\ las\ maquinas\ se\ muevan\ una\ posici\u00F3n\ al\ norte,\ siempre\ y\ cuando\ la\ nueva\ longitud\ no\ sea\ mayor\ a\ 180\r\n
+numComments=2

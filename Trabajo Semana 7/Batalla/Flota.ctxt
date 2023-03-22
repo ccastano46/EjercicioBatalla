@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Flota
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Flota\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Flota()
+comment1.text=\r\n\ Metodo\ constructor\ de\ la\ clase\ Flota\r\n
+comment2.params=newMaquina
+comment2.target=void\ buildMaquina(Maquina)
+comment3.params=numeroPortaAvion\ longitud\ latitud\ placa\ enAire\ piloto
+comment3.target=void\ anadirAvion(int,\ int,\ int,\ java.lang.String,\ boolean,\ Marino)
+comment4.params=
+comment4.target=void\ alNorte()
+comment4.text=\r\n\ Mueve\ la\ flota\ una\ posicion\ al\ norte\r\n
+comment5.params=dLon\ dLat
+comment5.target=void\ avance(int,\ int)
+comment5.text=\r\n\ Mueve\ todas\ las\ maquinas\ la\ distancia\ definida\r\n\ @param\ dLon,\ avance\ en\ longitud.\r\n\ @param\ dLat,\ avance\ en\ latitud.\r\n
+comment6.params=
+comment6.target=java.util.ArrayList\ maquinasDebiles()
+comment6.text=\r\n\ Consulta\ las\ maquinas\ debiles\ de\ una\ flota\r\n\ Un\ barco\ es\ debil\ si\ tiene\ menos\ de\ 5\ marinos;\ un\ avi\u00F3n,\ si\ no\ tiene\ piloto\ principal;\ y\ un\ portaaviones,\ si\ es\ un\ barco\ debil,\ o\ uno\ de\ \r\n\ sus\ aviones\ en\ el\ aire\ es\ debil.\r\n\ return\ ArrayList\ de\ las\ maquinas\ debiles\r\n
+comment7.params=lon\ lat
+comment7.target=void\ ataquen(int,\ int)
+comment7.text=\r\n\ Mueve\ todas\ las\ maquinas\ que\ no\ son\ d\u00E9biles\ paso\ a\ paso\ (uno\ a\ uno)\ hacia\ la\ posici\u00F3n\ a\ atacar\ indicada\ por\ (lon,\ lat)\r\n\ @param,\ lon,\ longitud\r\n\ @param\ lat,\ latitud\r\n
+numComments=8
