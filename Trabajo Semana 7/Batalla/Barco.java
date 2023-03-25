@@ -9,6 +9,7 @@ public class Barco extends Maquina
 {
     private int numero;
     private ArrayList<Marino> marinos;
+    private ArrayList<Submarino> submarinos;
     /**
      * Metodo consturctor de barco
      */
@@ -17,6 +18,7 @@ public class Barco extends Maquina
        this.numero = numero;
        marinos = new ArrayList<Marino>();
        marinos.add(marino);
+       submarinos = new ArrayList<Submarino>();
    }
    
    /**

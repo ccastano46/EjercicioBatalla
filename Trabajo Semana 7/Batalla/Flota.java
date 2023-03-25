@@ -1,4 +1,5 @@
 import java.util.*;
+import javax.swing.JOptionPane;
 /**
  * Write a description of class Flota here.
  * 
@@ -7,34 +8,39 @@ import java.util.*;
  */
 public class Flota
 {
-    private String name;
+    private String nombre;
     private Tablero tablero;
     private ArrayList<Maquina> maquinas;
     private ArrayList<Marino> marinos;
+    private ArrayList<Submarino> submarinos;
     /**
      * Metodo constructor de la clase Flota
      */
     public Flota(){
         maquinas = new ArrayList<Maquina>();
         marinos = new ArrayList<Marino>();
+        submarinos = new ArrayList<Submarino>();
     }
     
     public void buildMaquina(Maquina newMaquina){
         if((newMaquina instanceof Barco)  || (newMaquina instanceof PortaAviones))maquinas.add(newMaquina);
+        else JOptionPane.showMessageDialog(null, "No puede crear un avión sin antes crearlo en el porta aviones");
     }
     
-    public void anadirAvion(int numeroPortaAvion, int longitud, int latitud, String placa, boolean enAire, Marino piloto){
+    public void anadirAvion(int numeroPortaAvion, Avion avion){
         PortaAviones portaAvion;
         for(Maquina maquina : maquinas){
             if(maquina instanceof PortaAviones){
                 portaAvion = (PortaAviones) maquina;
                 if(portaAvion.getNumero() == numeroPortaAvion){
-                    if(enAire){
-                        portaAvion.anadirAvion(new Avion(longitud, latitud, placa, enAire, piloto));
-                        maquinas.add(new Avion(longitud, latitud, placa, enAire, piloto));
+                    
+                    if(avion.isInAir()){
+                        maquinas.add(avion);
+                        portaAvion.anadirAvion(avion);
                     } else{
-                        portaAvion.anadirAvion(new Avion(portaAvion.getUbicacion()[0],portaAvion.getUbicacion()[1], placa, enAire, piloto));
-                        maquinas.add(new Avion(portaAvion.getUbicacion()[0],portaAvion.getUbicacion()[1], placa, enAire, piloto));
+                        avion.setUbicacion(new Ubicacion(portaAvion.getUbicacion()[0], portaAvion.getUbicacion()[1]));
+                        maquinas.add(avion);
+                        portaAvion.anadirAvion(avion);
                     }
                 }
                 
@@ -74,8 +80,6 @@ public class Flota
         for(Maquina maquina : maquinas){
             if (maquina.esDebil()) maquinasDebiles.add(maquina);
         }
-        
-        
         return maquinasDebiles;
     }
     

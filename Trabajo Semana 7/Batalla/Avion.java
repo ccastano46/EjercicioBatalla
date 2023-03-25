@@ -30,5 +30,13 @@ public class Avion extends Maquina
    public boolean esDebil(){
        return Objects.isNull(piloto);
    }
+   
+   /**
+    * Función para identificar si el avión esta en el aire
+    */
+   
+   public boolean isInAir(){
+       return enAire;
+   }
     
 }

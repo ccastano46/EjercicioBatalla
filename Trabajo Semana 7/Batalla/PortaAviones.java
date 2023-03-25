@@ -23,7 +23,7 @@ public class PortaAviones extends Barco
     */
    public boolean esDebil(){
        for(Avion avion : aviones){
-           if(avion.esDebil()) return true;
+           if(avion.esDebil() && avion.isInAir()) return true;
        }
        return super.esDebil();
     }
