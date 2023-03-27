@@ -44,5 +44,16 @@ public class Avion extends Maquina
    public boolean isInAir(){
        return enAire;
    }
+   
+   /**
+     * Función que indica los marinos pertenecientes al barco
+     * @return ArryList de clase Marino
+     */
+    public ArrayList<Marino> getMarinos(){
+        ArrayList<Marino> marinos = new ArrayList<Marino>();
+        if(piloto != null) marinos.add(piloto);
+        if(copiloto != null) marinos.add(copiloto);
+        return marinos;
+    }
     
 }

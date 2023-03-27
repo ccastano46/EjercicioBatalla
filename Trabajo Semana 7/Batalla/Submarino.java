@@ -62,9 +62,16 @@ public class Submarino extends Maquina
     public void anadirSubmarino(Submarino submarino){
         submarinos.add(submarino);
     }
-    
-    
+    /**
+     * Función que indica los marinos pertenecientes al barco
+     * @return ArryList de clase Marino vacia, ya que los submarinos no tienen ningun marino abordo
+     */
+    public ArrayList<Marino> getMarinos(){
+        return new ArrayList<Marino>();
+    }
    public int getNumero(){
         return numero;
     }
+    
+    
 }

@@ -40,7 +40,21 @@ public class Barco extends Maquina
         submarinos.add(submarino);
     }
     
+    /**
+     * Función que indica los marinos pertenecientes al barco
+     * @return ArryList de clase Marino
+     */
+    public ArrayList<Marino> getMarinos(){
+        return marinos;
+    }
     
+    /**
+     * Función que indica los submarinos cuya maquina nodriza es ell barco
+     * @return ArryList de clase Submarino
+     */
+    public ArrayList<Submarino> getSubmarinos(){
+        return submarinos;
+    }
     
     
 }

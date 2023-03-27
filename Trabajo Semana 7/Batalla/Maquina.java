@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class Maquina here.
  * 
@@ -32,6 +32,10 @@ public abstract class Maquina
      */
     public abstract boolean esDebil();
     
+    /**
+     * Función abstracta que debería indicar los marinos pertenecientes a la maquina
+     */
     
+    protected abstract ArrayList<Marino> getMarinos();
     
 }

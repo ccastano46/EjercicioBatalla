@@ -12,14 +12,18 @@ public class Flota
     private Tablero tablero;
     private ArrayList<Maquina> maquinas;
     private ArrayList<Marino> marinos;
-    private ArrayList<Submarino> submarinos;
+    private ArrayList<Marino> marinosDestruidos;
+    private ArrayList<Barco> barcosDestruidos;
+    private ArrayList<Submarino> submarinosDestruidos;
     /**
      * Metodo constructor de la clase Flota
      */
     public Flota(){
         maquinas = new ArrayList<Maquina>();
         marinos = new ArrayList<Marino>();
-        submarinos = new ArrayList<Submarino>();
+        marinosDestruidos = new ArrayList<Marino>();
+        barcosDestruidos = new ArrayList<Barco>();
+        submarinosDestruidos = new ArrayList<Submarino>();
     }
     
     public void buildMaquina(Maquina newMaquina){
@@ -157,7 +161,37 @@ public class Flota
         }
     }
     
+    /**
+     * Metodo para saber que marinos pertenecen a la tropa
+     * @return ArrayList de la clase Marino
+     */
     
+    public ArrayList<Marino> getMarinos(){
+        for(Maquina maquina : maquinas){
+            marinos.addAll(maquina.getMarinos());
+        }
+        return marinos;
+    }
     
-   
+    /**
+     * Metodo para autodestruir un barco
+     */
+    
+    public void autoDestruirBarco(int numeroBarco){
+        boolean encontrado = false;
+        for(Maquina maquina : maquinas){
+            if(maquina instanceof Barco){
+                if(numeroBarco == ((Barco) maquina).getNumero()){
+                    barcosDestruidos.add((Barco) maquina);
+                    maquinas.remove(maquinas.indexOf(maquina));
+                    marinosDestruidos.addAll(maquina.getMarinos());
+                    submarinosDestruidos.addAll(((Barco) maquina).getSubmarinos());
+                    encontrado = true;
+                    JOptionPane.showMessageDialog(null, "El barco numero " + numeroBarco + " ha sido destruido por solicitud de la flota y junto a el, todos sus submarinos y marinos");
+                }
+            }
+            if(encontrado) break;
+        }
+        if(!encontrado) JOptionPane.showMessageDialog(null, "Barco no existente dentro de esta flota");
+    }
 }
