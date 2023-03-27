@@ -17,5 +17,5 @@ comment5.target=java.util.ArrayList\ getMarinos()
 comment5.text=\r\n\ Funci\u00F3n\ que\ indica\ los\ marinos\ pertenecientes\ al\ barco\r\n\ @return\ ArryList\ de\ clase\ Marino\r\n
 comment6.params=
 comment6.target=java.util.ArrayList\ getSubmarinos()
-comment6.text=\r\n\ Funci\u00F3n\ que\ indica\ los\ submarinos\ cuya\ maquina\ nodriza\ es\ ell\ barco\r\n\ @return\ ArryList\ de\ clase\ Submarino\r\n
+comment6.text=\r\n\ Funci\u00F3n\ que\ indica\ los\ submarinos\ cuya\ maquina\ nodriza\ es\ el\ barco\r\n\ @return\ ArryList\ de\ clase\ Submarino\r\n
 numComments=7

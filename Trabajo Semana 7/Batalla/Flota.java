@@ -184,14 +184,59 @@ public class Flota
                 if(numeroBarco == ((Barco) maquina).getNumero()){
                     barcosDestruidos.add((Barco) maquina);
                     maquinas.remove(maquinas.indexOf(maquina));
-                    marinosDestruidos.addAll(maquina.getMarinos());
-                    submarinosDestruidos.addAll(((Barco) maquina).getSubmarinos());
                     encontrado = true;
-                    JOptionPane.showMessageDialog(null, "El barco numero " + numeroBarco + " ha sido destruido por solicitud de la flota y junto a el, todos sus submarinos y marinos");
+                    for(Submarino submarino : ((Barco) maquina).getSubmarinos()){
+                        autoDestruirSubmarino(submarino);
+                    }
+                    JOptionPane.showMessageDialog(null, "El barco numero " + numeroBarco + " ha sido destruido por solicitud de la flota y junto a el, todos sus submarinos al no tener maquina nodriza");
                 }
             }
             if(encontrado) break;
         }
         if(!encontrado) JOptionPane.showMessageDialog(null, "Barco no existente dentro de esta flota");
+    }
+    
+    /**
+     * Metodo para autodestruir un marino
+     */
+    public void autoDestruirMarino(Marino marino){
+        boolean encontrado = false;
+        for(Marino tripulante : marinos){
+            if(tripulante.equals(marino)){
+                encontrado = true;
+                marinos.remove(tripulante);
+                marinos.add(tripulante);
+            }
+            if(encontrado){
+                JOptionPane.showMessageDialog(null, "El marino a sido destruido por solicitud");
+                break; 
+            }
+        }
+        if(!encontrado) JOptionPane.showMessageDialog(null, "El marino no existe");
+            
+    }
+    
+    /**
+     * Función que autodestruye todos los submarinos, una vez se destruye su madre nodriza
+     * @param submarino, submarino a destruir
+     */
+    
+    private void autoDestruirSubmarino(Submarino submarino){
+        boolean encontrado;
+        for(Maquina maquina : maquinas){
+            try{
+                if(submarino.getNumero() == ((Submarino) maquina).getNumero()){
+                    encontrado = true;
+                    submarinosDestruidos.add((Submarino) maquina);
+                    maquinas.remove(maquina);
+                    for(Submarino subma : ((Submarino) maquina).getSubmarinos()){
+                        autoDestruirSubmarino(subma);
+                    }
+                }else encontrado = false;
+            }catch(ClassCastException dispo){
+                encontrado = false;
+            }
+            if(encontrado) break;
+        }
     }
 }

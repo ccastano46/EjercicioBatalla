@@ -72,6 +72,12 @@ public class Submarino extends Maquina
    public int getNumero(){
         return numero;
     }
-    
+    /**
+     * Función que indica los submarinos cuya maquina nodriza es el submarino
+     * @return ArryList de clase Submarino
+     */
+    public ArrayList<Submarino> getSubmarinos(){
+        return submarinos;
+    }
     
 }

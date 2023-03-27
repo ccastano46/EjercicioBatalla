@@ -49,7 +49,7 @@ public class Barco extends Maquina
     }
     
     /**
-     * Función que indica los submarinos cuya maquina nodriza es ell barco
+     * Función que indica los submarinos cuya maquina nodriza es el barco
      * @return ArryList de clase Submarino
      */
     public ArrayList<Submarino> getSubmarinos(){
