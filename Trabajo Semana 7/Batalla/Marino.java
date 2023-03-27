@@ -18,4 +18,6 @@ public class Marino
         this.nombre = nombre;
         this.rango = rango;
     }
+    
+    
 }

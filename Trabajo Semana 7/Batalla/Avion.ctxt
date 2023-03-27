@@ -1,13 +1,16 @@
 #BlueJ class context
 comment0.target=Avion
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Avion\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=longitud\ latitud\ placa\ enAire\ piloto
-comment1.target=Avion(int,\ int,\ java.lang.String,\ boolean,\ Marino)
+comment1.params=longitud\ latitud\ placa\ enAire
+comment1.target=Avion(int,\ int,\ java.lang.String,\ boolean)
 comment1.text=\r\n\ Constructor\ avion\r\n
-comment2.params=
-comment2.target=boolean\ esDebil()
-comment2.text=\r\n\ Funcion\ que\ determina\ si\ el\ avi\u00F3n\ es\ debil.\ Esto\ sucede\ si\ no\ tiene\ piloto\r\n
+comment2.params=piloto
+comment2.target=void\ setPiloto(Marino)
+comment2.text=\r\n\ Metodo\ para\ asignarle\ al\ avi\u00F3n\ un\ piloto.\r\n
 comment3.params=
-comment3.target=boolean\ isInAir()
-comment3.text=\r\n\ Funci\u00F3n\ para\ identificar\ si\ el\ avi\u00F3n\ esta\ en\ el\ aire\r\n
-numComments=4
+comment3.target=boolean\ esDebil()
+comment3.text=\r\n\ Funcion\ que\ determina\ si\ el\ avi\u00F3n\ es\ debil.\ Esto\ sucede\ si\ no\ tiene\ piloto\r\n
+comment4.params=
+comment4.target=boolean\ isInAir()
+comment4.text=\r\n\ Funci\u00F3n\ para\ identificar\ si\ el\ avi\u00F3n\ esta\ en\ el\ aire\r\n
+numComments=5

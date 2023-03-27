@@ -16,10 +16,16 @@ public class Avion extends Maquina
      * Constructor avion
      */
     
-    public Avion(int longitud, int latitud, String placa, boolean enAire, Marino piloto){
+    public Avion(int longitud, int latitud, String placa, boolean enAire){
         super(longitud, latitud);
         this.placa = placa;
         this.enAire = enAire;
+    }
+    
+    /**
+     * Metodo para asignarle al avión un piloto.
+     */
+    public void setPiloto(Marino piloto){
         this.piloto = piloto;
     }
     

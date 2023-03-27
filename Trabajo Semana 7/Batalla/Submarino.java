@@ -1,5 +1,6 @@
 import javax.swing.JOptionPane;
 import java.util.*;
+import java.util.Arrays; 
 /**
  * Write a description of class Submarino here.
  * 
@@ -8,14 +9,18 @@ import java.util.*;
  */
 public class Submarino extends Maquina
 {
+    private static int NUMERO;
     private long profundidad = 0;
     private  Barco maquinaNodriza;
     private Submarino maquinaNodriza1;
     private ArrayList<Submarino> submarinos;
-   public Submarino(int longitud, int latitud, Object maquinaNodriza){
+    private int numero;
+   public Submarino(int longitud, int latitud, Maquina maquinaNodriza){
        super(longitud,latitud);
        setNodriza(maquinaNodriza);
        submarinos = new ArrayList<Submarino>();
+       NUMERO++;
+       numero = NUMERO;
    }
    
    /**
@@ -30,11 +35,36 @@ public class Submarino extends Maquina
    /**
     * Metodo para asignarle al submarino una maquina nodriza
     */
-   public void setNodriza(Object nodriza){
+   public void setNodriza(Maquina nodriza){
        if(nodriza instanceof Barco) maquinaNodriza = (Barco)nodriza;
        else if(nodriza instanceof Submarino) maquinaNodriza1 = (Submarino)nodriza;
        else JOptionPane.showMessageDialog(null, "La madre nodriza no puede ser diferente a un barco o submarino");
        
        
    }
+   
+   /**
+    * Función que indica la maquina nodriza del submarino
+    */
+   
+   public Maquina getNodriza() throws NullPointerException{
+       if(maquinaNodriza != null) return maquinaNodriza;
+       else if(maquinaNodriza1 != null) return maquinaNodriza1;
+       else {
+           throw new NullPointerException("La maquina nodriza no puede ser nula");
+       }
+       
+   }
+   
+   /**
+     * Metodo que añade un submarino al barco
+     */
+    public void anadirSubmarino(Submarino submarino){
+        submarinos.add(submarino);
+    }
+    
+    
+   public int getNumero(){
+        return numero;
+    }
 }

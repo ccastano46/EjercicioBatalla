@@ -32,4 +32,16 @@ public class Barco extends Maquina
    public int getNumero(){
         return numero;
     }
+    
+    /**
+     * Metodo que añade un submarino al barco
+     */
+    public void anadirSubmarino(Submarino submarino){
+        submarinos.add(submarino);
+    }
+    
+    
+    
+    
 }
+

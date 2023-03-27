@@ -24,16 +24,18 @@ public class Flota
     
     public void buildMaquina(Maquina newMaquina){
         if((newMaquina instanceof Barco)  || (newMaquina instanceof PortaAviones))maquinas.add(newMaquina);
+        else if(newMaquina instanceof Submarino) anadirSubmarino((Submarino)newMaquina);
         else JOptionPane.showMessageDialog(null, "No puede crear un avión sin antes crearlo en el porta aviones");
     }
     
     public void anadirAvion(int numeroPortaAvion, Avion avion){
         PortaAviones portaAvion;
+        boolean encontrado = false;
         for(Maquina maquina : maquinas){
             if(maquina instanceof PortaAviones){
                 portaAvion = (PortaAviones) maquina;
                 if(portaAvion.getNumero() == numeroPortaAvion){
-                    
+                    encontrado = true;
                     if(avion.isInAir()){
                         maquinas.add(avion);
                         portaAvion.anadirAvion(avion);
@@ -42,12 +44,72 @@ public class Flota
                         maquinas.add(avion);
                         portaAvion.anadirAvion(avion);
                     }
+                    
                 }
                 
             }
+            if(encontrado) break;
         }
         
     }
+    
+    /**
+     * Metodo que añade un submarino a una flota
+     */
+    
+    private void anadirSubmarino(Submarino submarino){
+        boolean encontrado = false;
+        //Se analiza si la madre nodriza es barco.
+        try{
+            if(submarino.getNodriza() instanceof Barco){
+                //Se trata de ver si la nodriza ya esta registrada en las maquinas.
+                for(Maquina maquina : maquinas){
+                   try{
+                       if(((Barco)submarino.getNodriza()).getNumero() == ((Barco) maquina).getNumero()){
+                       ((Barco) maquina).anadirSubmarino(submarino);
+                       maquinas.add(submarino);
+                       encontrado = true;
+                       }
+                   }catch(ClassCastException dispositivo){
+                       //Maquina no es un barco 
+                       encontrado = false;
+                   }
+                   if(encontrado) break;
+                }
+                //Si la nodriza no esta registrada, se registra
+                if(!encontrado){
+                    maquinas.add(submarino.getNodriza());
+                    ((Barco) maquinas.get(maquinas.size()-1)).anadirSubmarino(submarino);
+                }
+                //Se analiza la opción de que nodriza es un submarino.
+            }else if(submarino.getNodriza() instanceof Submarino){ 
+                //Se trata de ver si la nodriza ya esta registrada en las maquinas.
+                for(Maquina maquina : maquinas){
+                   try{
+                       if(((Submarino) submarino.getNodriza()).getNumero() == ((Submarino) maquina).getNumero()){
+                       ((Submarino) maquina).anadirSubmarino(submarino);
+                       maquinas.add(submarino);
+                       encontrado = true;
+                       }
+                   }catch(ClassCastException dispositivo){
+                       //Maquina no es un submarino
+                       encontrado = false;
+                   }
+                   if(encontrado) break;
+                }
+                //Si la nodriza no esta registrada, se registra.
+                if(!encontrado){
+                    maquinas.add(submarino.getNodriza());
+                    ((Submarino) maquinas.get(maquinas.size()-1)).anadirSubmarino(submarino);
+                }
+            }
+        }catch(NullPointerException dispositivo){
+            JOptionPane.showMessageDialog(null, "La maquina nodriza no puede ser nula");
+        }
+    }
+        
+    
+    
     
     /**
      * Mueve la flota una posicion al norte
@@ -94,4 +156,8 @@ public class Flota
             if (!maquinasDebiles().contains(maquina)) maquina.setUbicacion(new Ubicacion(lon, lat));
         }
     }
+    
+    
+    
+   
 }
