@@ -18,7 +18,7 @@ public abstract class Maquina
     /**
      * metodo que le da una nueva ubicacion a la maquina.
      */
-    public void setUbicacion(Ubicacion newUbicacion){
+    public void setUbicacion(Ubicacion newUbicacion) {
         ubicacion = newUbicacion;
     }
     /**
@@ -37,5 +37,11 @@ public abstract class Maquina
      */
     
     protected abstract ArrayList<Marino> getMarinos();
+    
+    /**
+     * 
+     */
+    
+    public abstract void anadirMarino(Marino marino);
     
 }

@@ -18,7 +18,8 @@ public class Flota
     /**
      * Metodo constructor de la clase Flota
      */
-    public Flota(){
+    public Flota(String nombre){
+        this.nombre = nombre;
         maquinas = new ArrayList<Maquina>();
         marinos = new ArrayList<Marino>();
         marinosDestruidos = new ArrayList<Marino>();
@@ -26,10 +27,15 @@ public class Flota
         submarinosDestruidos = new ArrayList<Submarino>();
     }
     
+    public String getNombre(){
+        return nombre;
+    }
+    
     public void buildMaquina(Maquina newMaquina){
-        if((newMaquina instanceof Barco)  || (newMaquina instanceof PortaAviones))maquinas.add(newMaquina);
+        if((newMaquina instanceof Barco))maquinas.add(newMaquina);
         else if(newMaquina instanceof Submarino) anadirSubmarino((Submarino)newMaquina);
         else JOptionPane.showMessageDialog(null, "No puede crear un avión sin antes crearlo en el porta aviones");
+        marinos.addAll(newMaquina.getMarinos());
     }
     
     public void anadirAvion(int numeroPortaAvion, Avion avion){
@@ -71,7 +77,6 @@ public class Flota
                    try{
                        if(((Barco)submarino.getNodriza()).getNumero() == ((Barco) maquina).getNumero()){
                        ((Barco) maquina).anadirSubmarino(submarino);
-                       maquinas.add(submarino);
                        encontrado = true;
                        }
                    }catch(ClassCastException dispositivo){
@@ -82,9 +87,10 @@ public class Flota
                 }
                 //Si la nodriza no esta registrada, se registra
                 if(!encontrado){
-                    maquinas.add(submarino.getNodriza());
+                    buildMaquina(submarino.getNodriza());
                     ((Barco) maquinas.get(maquinas.size()-1)).anadirSubmarino(submarino);
                 }
+                maquinas.add(submarino);
                 //Se analiza la opción de que nodriza es un submarino.
             }else if(submarino.getNodriza() instanceof Submarino){ 
                 //Se trata de ver si la nodriza ya esta registrada en las maquinas.
@@ -92,7 +98,6 @@ public class Flota
                    try{
                        if(((Submarino) submarino.getNodriza()).getNumero() == ((Submarino) maquina).getNumero()){
                        ((Submarino) maquina).anadirSubmarino(submarino);
-                       maquinas.add(submarino);
                        encontrado = true;
                        }
                    }catch(ClassCastException dispositivo){
@@ -103,9 +108,10 @@ public class Flota
                 }
                 //Si la nodriza no esta registrada, se registra.
                 if(!encontrado){
-                    maquinas.add(submarino.getNodriza());
+                    buildMaquina(submarino.getNodriza());
                     ((Submarino) maquinas.get(maquinas.size()-1)).anadirSubmarino(submarino);
                 }
+                maquinas.add(submarino);
             }
         }catch(NullPointerException dispositivo){
             JOptionPane.showMessageDialog(null, "La maquina nodriza no puede ser nula");
@@ -117,10 +123,12 @@ public class Flota
     
     /**
      * Mueve la flota una posicion al norte
+     * @throw BatallaNavalException si una de sus maquinas no logra realizar la operación
      */
-    public void alNorte(){
+    public void alNorte() throws BatallaNavalException{
         for(Maquina maquina : maquinas){
-            maquina.setUbicacion(new Ubicacion(maquina.getUbicacion()[0] + 1, maquina.getUbicacion()[1]));
+            if(maquina.getUbicacion()[1] + 1 > 90) throw new BatallaNavalException(BatallaNavalException.FUERADELIMITE);
+            maquina.setUbicacion(new Ubicacion(maquina.getUbicacion()[0], maquina.getUbicacion()[1] + 1));
         }
     }
     
@@ -129,7 +137,7 @@ public class Flota
      * @param dLon, avance en longitud.
      * @param dLat, avance en latitud.
      */
-    public void avance(int dLon, int dLat){
+    public void avance(int dLon, int dLat) throws BatallaNavalException{
         for(Maquina maquina : maquinas){
             maquina.setUbicacion(new Ubicacion(maquina.getUbicacion()[0] + dLon, maquina.getUbicacion()[1] + dLat));
         }
@@ -167,9 +175,6 @@ public class Flota
      */
     
     public ArrayList<Marino> getMarinos(){
-        for(Maquina maquina : maquinas){
-            marinos.addAll(maquina.getMarinos());
-        }
         return marinos;
     }
     
@@ -239,4 +244,32 @@ public class Flota
             if(encontrado) break;
         }
     }
+    /**
+     * Consulta la potencia de la flota. 
+     * @throws BatallaNaval si existen menos marinos que máquinas en la flota
+     */
+    
+    public int potencia() throws BatallaNavalException{
+        if(marinos.size() < maquinas.size()) throw new BatallaNavalException(BatallaNavalException.PROBLEMASDEPOTENCIA);
+        return maquinas.size() - maquinasDebiles().size();
+    }
+    public void anadirMarino(Marino marino, Maquina maquina){
+        for(Maquina maquina1 : maquinas){
+            if(!(maquina1 instanceof Submarino) && maquina1.equals(maquina)){
+                maquina.anadirMarino(marino);
+                marinos.add(marino);
+                break;
+            }
+        }
+    }
+    
+    
+    
+    public int numMaquinas(){
+        return maquinas.size();
+    }
+    public int numMarinos(){
+        return marinos.size();
+    }
+    
 }

@@ -23,4 +23,6 @@ comment7.target=int\ getNumero()
 comment8.params=
 comment8.target=java.util.ArrayList\ getSubmarinos()
 comment8.text=\r\n\ Funci\u00F3n\ que\ indica\ los\ submarinos\ cuya\ maquina\ nodriza\ es\ el\ submarino\r\n\ @return\ ArryList\ de\ clase\ Submarino\r\n
-numComments=9
+comment9.params=marino
+comment9.target=void\ anadirMarino(Marino)
+numComments=10

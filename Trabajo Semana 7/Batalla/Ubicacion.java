@@ -28,6 +28,7 @@ public class Ubicacion
    /**
     * Metodo que ajusta la latitud de la ubicación, siempre y cuando esta este dentro del rango [0,180]
     */
+   
    public void setLongitud(int newLongitud){
        if(0 <= newLongitud && newLongitud <= 180)longitud = newLongitud;
        else JOptionPane.showMessageDialog(null, "La longitud no puede ser mayor a 180 o menor a 0");

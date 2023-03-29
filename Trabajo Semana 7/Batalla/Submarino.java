@@ -80,4 +80,8 @@ public class Submarino extends Maquina
         return submarinos;
     }
     
+    public void anadirMarino(Marino marino){
+        
+    }
+    
 }

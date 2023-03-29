@@ -8,7 +8,7 @@ import java.util.*;
 public class Barco extends Maquina 
 {
     private int numero;
-    private ArrayList<Marino> marinos;
+    protected ArrayList<Marino> marinos;
     private ArrayList<Submarino> submarinos;
     /**
      * Metodo consturctor de barco
@@ -56,6 +56,31 @@ public class Barco extends Maquina
         return submarinos;
     }
     
+    /**
+     * Se sobreescribe el metodo equals
+     */
+    
+    public boolean equals (Object objeto){
+        boolean isEqual;
+        try{
+            Barco b = (Barco) objeto;
+            if (numero == b.getNumero()){
+                isEqual = true;
+            }
+            else{
+                isEqual = false;
+            }
+           
+        }
+        catch (ClassCastException o){
+            isEqual = false; 
+        }
+        
+        return isEqual;
+    }
+    public void anadirMarino(Marino marino){
+        marinos.add(marino);
+    }
     
 }
 

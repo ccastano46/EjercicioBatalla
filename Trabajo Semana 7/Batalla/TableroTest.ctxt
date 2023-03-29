@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TableroTest
+comment0.text=\r\n\ The\ test\ class\ TableroTest.\r\n\r\n\ @author\ \ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ shouldCreat()
+comment1.text=\r\n\ Metodo\ de\ prueba\ para\ verificar\ que\ todas\ las\ maquinas\ se\ muevan\ una\ posici\u00F3n\ al\ norte,\ siempre\ y\ cuando\ la\ nueva\ longitud\ no\ sea\ mayor\ a\ 180\r\n
+comment2.params=
+comment2.target=void\ shouldAlNorte()
+comment2.text=\r\n\ Metodo\ para\ verificar\ que\ se\ calcula\ las\ flotas\ que\ pudieron\ mover\ al\ norte\ completamente\r\n
+comment3.params=
+comment3.target=void\ shouldFailPotencia()
+comment3.text=\r\n\ Metodo\ para\ verificar\ que\ se\ lanze\ una\ excepci\u00F3n\ al\ momento\ de\ consultar\ la\ potencia\ del\ tablero\r\n
+numComments=4
