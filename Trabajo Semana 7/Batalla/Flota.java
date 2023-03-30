@@ -26,18 +26,25 @@ public class Flota
         barcosDestruidos = new ArrayList<Barco>();
         submarinosDestruidos = new ArrayList<Submarino>();
     }
-    
+    /**
+     * Función que indica el nombre de la flota
+     * @return nombre
+     */
     public String getNombre(){
         return nombre;
     }
-    
+    /**
+     * Metodo que añade una maquina a la flota
+     */
     public void buildMaquina(Maquina newMaquina){
         if((newMaquina instanceof Barco))maquinas.add(newMaquina);
         else if(newMaquina instanceof Submarino) anadirSubmarino((Submarino)newMaquina);
         else JOptionPane.showMessageDialog(null, "No puede crear un avión sin antes crearlo en el porta aviones");
         marinos.addAll(newMaquina.getMarinos());
     }
-    
+    /**
+     * Metodo que crea un avión en la flota y se lo asigna a un porta avión previamente creado.
+     */
     public void anadirAvion(int numeroPortaAvion, Avion avion){
         PortaAviones portaAvion;
         boolean encontrado = false;
@@ -60,11 +67,11 @@ public class Flota
             }
             if(encontrado) break;
         }
-        
+        if(!encontrado) JOptionPane.showMessageDialog(null, "No se encontro el portaaviones");
     }
     
     /**
-     * Metodo que añade un submarino a una flota
+     * Metodo que añade un submarino a una flota y a su maquina nodriza
      */
     
     private void anadirSubmarino(Submarino submarino){
@@ -118,9 +125,6 @@ public class Flota
         }
     }
         
-    
-    
-    
     /**
      * Mueve la flota una posicion al norte
      * @throw BatallaNavalException si una de sus maquinas no logra realizar la operación
@@ -253,17 +257,21 @@ public class Flota
         if(marinos.size() < maquinas.size()) throw new BatallaNavalException(BatallaNavalException.PROBLEMASDEPOTENCIA);
         return maquinas.size() - maquinasDebiles().size();
     }
+    
+    /**
+     * Metodo que enlista un marino en la maquina asignada
+     * @param marino, marino a ser añadido a la flota.
+     * @param maquina, maquina de la cual el marino va a ser parte.
+     */
     public void anadirMarino(Marino marino, Maquina maquina){
         for(Maquina maquina1 : maquinas){
             if(!(maquina1 instanceof Submarino) && maquina1.equals(maquina)){
-                maquina.anadirMarino(marino);
+                maquina1.anadirMarino(marino);
                 marinos.add(marino);
                 break;
             }
         }
     }
-    
-    
     
     public int numMaquinas(){
         return maquinas.size();

@@ -17,7 +17,7 @@ public class TableroTest
      * Metodo de prueba para verificar que todas las maquinas se muevan una posición al norte, siempre y cuando la nueva longitud no sea mayor a 180
      */
     @Test
-    public void shouldCreat(){
+    public void shouldCreate(){
         Tablero tablero = new Tablero();
         tablero.anadirFlota("Flota1");
         tablero.anadirFlota("Flota2");
@@ -44,7 +44,7 @@ public class TableroTest
      * Metodo para verificar que se lanze una excepción al momento de consultar la potencia del tablero
      */
     @Test()
-    public void shouldFailPotencia() throws BatallaNavalException {
+    public void shouldFailPotencia()throws BatallaNavalException{
         Tablero tablero = new Tablero();
         tablero.anadirFlota("Flota1");
         tablero.anadirFlota("Flota2");  
@@ -52,4 +52,18 @@ public class TableroTest
         tablero.buildMaquina("Flota2", new Submarino(80,50, new Submarino(70,80, new Barco(70, 50,2, new Marino("Juan",1)))));
         tablero.potencia();
     }
+    
+    /**
+     * Metodo para verificar que se averigua la potencia del tablero
+     */
+    @Test()
+    public void shouldGivePotencia()throws BatallaNavalException{
+        Tablero tablero = new Tablero();
+        tablero.anadirFlota("Flota1");
+        tablero.buildMaquina("Flota1", new Submarino(50,50, new Barco(50, 50,1, new Marino("Camilo",1))));
+        tablero.anadirMarino("Flota1", new Marino("Juan",2),new Barco(50, 50,1, new Marino("Camilo",1)));
+        assertEquals(tablero.potencia(), 1);
+        assertEquals(tablero.numMaquinas(), 2);
+    }
+    
 }

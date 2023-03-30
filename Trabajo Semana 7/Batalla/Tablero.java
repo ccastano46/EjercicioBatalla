@@ -18,21 +18,41 @@ public class Tablero
     
     /**
      * Metodo para crear una flota dentro del tablero
-     * @param flota, flota a ser añadida
+     * @param flota, nombre de la flota a ser añadida
      */
     
     public void anadirFlota(String nombre){
         flotas.add(new Flota(nombre));
     }
-    
+    /**
+    * Metodo para construir una maquina dentro de la flota dada
+    * @param nombre, nombre de la flota a la cual se le va a añadir la maquina.
+    * @param maquina, maquina a ser creada
+    */
     public void buildMaquina(String nombre, Maquina maquina){
         for(Flota flota : flotas){
             if(nombre.equals(flota.getNombre())){
                 flota.buildMaquina(maquina);
+                break;
             }
         }
     }
     
+    /**
+     * Metodo para añadir avion a una flota.
+     * @param nombre, nombre de la flota a la cual se le va a añadir la maquina.
+     * @param avion, avion a ser creado.
+     * @param numPortaAviones, numero del portavion al cual se le va a atribuir el avión.
+     */
+    
+    public void anadirAvion(String nombre, Avion avion, int numPortaAviones){
+        for(Flota flota : flotas){
+            if(nombre.equals(flota.getNombre())){
+                flota.anadirAvion(numPortaAviones, avion);
+                break;
+            }
+        }
+    }
     /**
      * Consulta el número de flotas que lograron un movimiento completo
      * @throws BatallaNavalException si más de la mitad de las flotas tienen problemas de potencia
@@ -87,5 +107,20 @@ public class Tablero
             contador += flota.numMarinos();
         }
         return contador;
+    }
+    
+    /**
+     * Metodo que añade un marino a una flota indicada
+     * @param nombre, nombre de la flota.
+     * @param marino, marino a ser añadido a la flota.
+     * @param maquina, maquina de la cual el marino va a ser parte.
+     */
+    public void anadirMarino(String nombre, Marino marino, Maquina maquina){
+        for(Flota flota : flotas){
+            if(nombre.equals(flota.getNombre())){
+                flota.anadirMarino(marino, maquina);
+                break;
+            }
+        }
     }
 }
