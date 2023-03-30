@@ -24,6 +24,7 @@ comment15.target=void\ anadirMarino(Marino,\ Maquina)
 comment15.text=\r\n\ Metodo\ que\ enlista\ un\ marino\ en\ la\ maquina\ asignada\r\n\ @param\ marino,\ marino\ a\ ser\ a\u00F1adido\ a\ la\ flota.\r\n\ @param\ maquina,\ maquina\ de\ la\ cual\ el\ marino\ va\ a\ ser\ parte.\r\n
 comment16.params=
 comment16.target=java.util.ArrayList\ piloto()
+comment16.text=\r\n\ Consulta\ los\ pilotos\ de\ la\ flota.\r\n\ @trhows\ BatallaNavalException\ si\ el\ \ piloto\ no\ es\ un\ marino\ de\ portaviones.\r\n\ @trhows\ BatallaNavalException\ si\ el\ piloto\ se\ pilotea\ otro\ avion\ diferente.\r\n\ @return\ ArrayList\ de\ marino\ pilotos\r\n
 comment17.params=list
 comment17.target=boolean\ foundDuplicate(java.util.ArrayList)
 comment18.params=

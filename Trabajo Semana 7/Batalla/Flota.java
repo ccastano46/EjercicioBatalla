@@ -273,10 +273,15 @@ public class Flota
         }
     }
     
+    /**
+     * Consulta los pilotos de la flota.
+     * @trhows BatallaNavalException si el  piloto no es un marino de portaviones.
+     * @trhows BatallaNavalException si el piloto se pilotea otro avion diferente.
+     * @return ArrayList de marino pilotos
+     */
     public ArrayList<Marino> piloto() throws BatallaNavalException{
         ArrayList<Marino> avionesPilotos = new ArrayList<Marino>();
         ArrayList<Marino> portaAvionesMarinos = new ArrayList<Marino>();
-        ArrayList<Marino> barcoMarinos = new ArrayList<Marino>();
         for(Maquina maquina : maquinas){
             if(maquina instanceof Avion){
                 Avion avion = (Avion) maquina;
@@ -286,15 +291,10 @@ public class Flota
                 PortaAviones port = (PortaAviones) maquina;
                 avionesPilotos.addAll(port.getMarinos());
             }
-            if(maquina instanceof Barco && !(maquina instanceof PortaAviones)){
-                Barco barco = (Barco) maquina;
-                barcoMarinos.addAll(barco.getMarinos());
-            }
         }
         if (foundDuplicate(avionesPilotos)) throw new BatallaNavalException(BatallaNavalException.PILOTOINFILTRADO);
         if(!portaAvionesMarinos.containsAll(avionesPilotos)) throw new BatallaNavalException(BatallaNavalException.PILOTOINFILTRADO);
-        barcoMarinos.addAll(portaAvionesMarinos);
-        return barcoMarinos;
+        return avionesPilotos;
     }
     
     private boolean foundDuplicate(ArrayList<Marino> list){

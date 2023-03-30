@@ -71,7 +71,8 @@ public class Tablero
     
     /**
      * Consulta las flotas que tienen pilotos infiltrados
-     * @return 
+     * @trhows BatallaNavalException si la flota no tiene marinos.
+     * @return contador, numero de infiltrados.
      */
     public int infiltrados()throws BatallaNavalException{
         int contador = 0;
