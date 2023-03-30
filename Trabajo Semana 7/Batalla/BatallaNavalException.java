@@ -10,6 +10,8 @@ public class BatallaNavalException extends Exception
     public static final String FUERADELIMITE = "La cordenada excede los limites del tablero";
     public static final String PROBLEMASDEPOTENCIA = "La flota tiene menos marinos que maquinas";
     public static final String TABLEROSINPOTENCIA = "Más de la mitad de las flotas tienen problemas de potencias";
+    public static final String PILOTOINFILTRADO = "Piloto infiltrado";
+    public static final String FLOTAMARINONULL = "Flota no tiene marinos asignados";
     public BatallaNavalException(String message){
         super(message);
     }

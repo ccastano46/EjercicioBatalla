@@ -28,8 +28,18 @@ public class PortaAviones extends Barco
        return super.esDebil();
     }
     
+    /**
+     * Añade un avion al porta aviones.
+     */
     public void anadirAvion(Avion avion){
         aviones.add(avion);
+    }
+    
+    /**
+     * Metodo de get del ArrayList de aviones.
+     */
+    public ArrayList<Avion> getAviones(){
+        return aviones;
     }
     
 

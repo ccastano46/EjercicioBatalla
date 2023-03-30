@@ -39,8 +39,6 @@ public class Submarino extends Maquina
        if(nodriza instanceof Barco) maquinaNodriza = (Barco)nodriza;
        else if(nodriza instanceof Submarino) maquinaNodriza1 = (Submarino)nodriza;
        else JOptionPane.showMessageDialog(null, "La madre nodriza no puede ser diferente a un barco o submarino");
-       
-       
    }
    
    /**

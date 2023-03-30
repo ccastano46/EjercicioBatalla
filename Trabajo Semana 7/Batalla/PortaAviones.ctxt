@@ -9,4 +9,6 @@ comment2.target=boolean\ esDebil()
 comment2.text=\r\n\ Funcion\ que\ determina\ si\ el\ barco\ es\ debil.\ Esto\ sucede\ si\ es\ un\ barco\ debil\ o\ si\ un\ avion\ que\ esta\ en\ el\ aire\ es\ debil\r\n
 comment3.params=avion
 comment3.target=void\ anadirAvion(Avion)
-numComments=4
+comment4.params=
+comment4.target=java.util.ArrayList\ getAviones()
+numComments=5

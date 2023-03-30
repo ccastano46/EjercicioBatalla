@@ -70,6 +70,22 @@ public class Tablero
     }
     
     /**
+     * Consulta las flotas que tienen pilotos infiltrados
+     * @return 
+     */
+    public int infiltrados()throws BatallaNavalException{
+        int contador = 0;
+        for(Flota flota : flotas){
+            try{
+                if(flota.piloto()==null) throw new BatallaNavalException(BatallaNavalException.FLOTAMARINONULL);
+            }catch(BatallaNavalException flot){
+                contador++;
+            }
+        }
+        return contador;
+    }
+    
+    /**
      * Consulta la potencia del tablero
      * @trhows BatallaNavalException si más de la mitad de las flotas tienen problemas de potencia
      */

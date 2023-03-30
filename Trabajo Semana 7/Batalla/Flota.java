@@ -273,6 +273,46 @@ public class Flota
         }
     }
     
+    public ArrayList<Marino> piloto() throws BatallaNavalException{
+        ArrayList<Marino> avionesPilotos = new ArrayList<Marino>();
+        ArrayList<Marino> portaAvionesMarinos = new ArrayList<Marino>();
+        ArrayList<Marino> barcoMarinos = new ArrayList<Marino>();
+        for(Maquina maquina : maquinas){
+            if(maquina instanceof Avion){
+                Avion avion = (Avion) maquina;
+                avionesPilotos.add(avion.getMarinos().get(0));
+            }
+            if(maquina instanceof PortaAviones){
+                PortaAviones port = (PortaAviones) maquina;
+                avionesPilotos.addAll(port.getMarinos());
+            }
+            if(maquina instanceof Barco && !(maquina instanceof PortaAviones)){
+                Barco barco = (Barco) maquina;
+                barcoMarinos.addAll(barco.getMarinos());
+            }
+        }
+        if (foundDuplicate(avionesPilotos)) throw new BatallaNavalException(BatallaNavalException.PILOTOINFILTRADO);
+        if(!portaAvionesMarinos.containsAll(avionesPilotos)) throw new BatallaNavalException(BatallaNavalException.PILOTOINFILTRADO);
+        barcoMarinos.addAll(portaAvionesMarinos);
+        return barcoMarinos;
+    }
+    
+    private boolean foundDuplicate(ArrayList<Marino> list){
+        boolean foundDuplicate = false;
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    foundDuplicate = true;
+                    break;
+                }
+            }
+            if (foundDuplicate) {
+                break;
+            }
+        }
+        return foundDuplicate;
+    }
+    
     public int numMaquinas(){
         return maquinas.size();
     }
